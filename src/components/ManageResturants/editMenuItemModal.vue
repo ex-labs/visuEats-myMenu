@@ -6,7 +6,7 @@
         <v-btn icon dark @click="show = false">
           <v-icon> close</v-icon>
         </v-btn>
-        <v-toolbar-title>Edit {{ data.name }}</v-toolbar-title>
+        <v-toolbar-title>  {{mode=='edit' ? 'Edit' : 'Add New Item' }}   {{ data.name }}</v-toolbar-title>
       </v-toolbar>
       <v-card-text class="mt-4">
         <v-form :ref="config.formRef">
@@ -64,7 +64,7 @@
 //import slugify from "slugify";
 
 export default {
-  props: ["showDialog", "data", "currentResturant"],
+  props: ["showDialog", "data", "currentResturant", "mode"],
   data() {
     return {
       config: {
@@ -149,7 +149,14 @@ export default {
           o["image"] = imageURL;
         }
 
-        this.$fb
+        var id;
+        if (this.mode == "edit") {
+          id = this.data.id;
+        } else {
+          id = this.$fb.database().ref().push().key;
+        }
+
+        var ref = this.$fb
           .database()
           .ref(
             "restaurants/" +
@@ -157,17 +164,31 @@ export default {
               "/menus/" +
               this.data.menuId +
               "/items/" +
-              this.data.id
-          )
-          .update(o)
-          .then(() => {
-            this.loading = false;
-            this.show = false;
-          })
-          .catch((err) => {
-            this.loading = false;
-            alert(err.message);
-          });
+              id
+          );
+        if (this.mode == "edit") {
+          ref
+            .update(o)
+            .then(() => {
+              this.loading = false;
+              this.show = false;
+            })
+            .catch((err) => {
+              this.loading = false;
+              alert(err.message);
+            });
+        } else {
+          ref
+            .set(o)
+            .then(() => {
+              this.loading = false;
+              this.show = false;
+            })
+            .catch((err) => {
+              this.loading = false;
+              alert(err.message);
+            });
+        }
       }
     },
   },

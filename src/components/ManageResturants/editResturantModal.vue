@@ -6,7 +6,10 @@
         <v-btn icon dark @click="show = false">
           <v-icon> close</v-icon>
         </v-btn>
-        <v-toolbar-title>Edit {{ data.name }}</v-toolbar-title>
+        <v-toolbar-title
+          >{{ mode == "edit" ? "Edit" : "Add New Item" }}
+          {{ data.name }}</v-toolbar-title
+        >
       </v-toolbar>
       <v-card-text class="mt-4">
         <v-form :ref="config.fromRef">
@@ -73,7 +76,7 @@
 import slugify from "slugify";
 
 export default {
-  props: ["showDialog", "data"],
+  props: ["showDialog", "data", "mode"],
   data() {
     return {
       config: {
@@ -128,7 +131,9 @@ export default {
     },
 
     isLocalImage(i) {
-      return i.includes("https://firebasestorage.googleapis.com/") || i=='' || i==null
+      return i.includes("https://firebasestorage.googleapis.com/") ||
+        i == "" ||
+        i == null
         ? false
         : true;
     },
@@ -178,18 +183,38 @@ export default {
           o["uri"] = uri;
         }
         console.log("the o ", o);
-        this.$fb
-          .database()
-          .ref(this.config.parent + "/" + this.data.id)
-          .update(o)
-          .then(() => {
-            this.loading = false;
-            this.show = false;
-          })
-          .catch((err) => {
-            this.loading = false;
-            alert(err.message);
-          });
+        var id;
+        if (this.mode == "edit") {
+          id = this.data.id;
+        } else {
+          id = this.$fb.database().ref().push().key;
+        }
+
+        var ref = this.$fb.database().ref(this.config.parent + "/" + id);
+
+        if (this.mode == "edit") {
+          ref
+            .update(o)
+            .then(() => {
+              this.loading = false;
+              this.show = false;
+            })
+            .catch((err) => {
+              this.loading = false;
+              alert(err.message);
+            });
+        } else {
+          ref
+            .set(o)
+            .then(() => {
+              this.loading = false;
+              this.show = false;
+            })
+            .catch((err) => {
+              this.loading = false;
+              alert(err.message);
+            });
+        }
       }
     },
   },

@@ -9,7 +9,13 @@
             This is the Dashboard home of the
             <span class="fw6">Super Admin</span> Authentication Required.
           </p>
+          <div>
+            <v-btn color="dark" @click="setResturantAdd()"
+              >Add new Restaurant</v-btn
+            >
+          </div>
         </div>
+
         <div class="w-100">
           <div
             class="w-100 ve_light_bg bt pv4 ph4 flex"
@@ -61,6 +67,10 @@
               <v-icon> close</v-icon>
             </v-btn>
             <v-toolbar-title>Settings</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn color="white" outlined @click="setMenuAdd()"
+              >Add new Menu</v-btn
+            >
           </v-toolbar>
           <!-- the main content -->
           <v-expansion-panels v-if="currentResturant">
@@ -78,6 +88,10 @@
                       <i class="material-icons">edit</i>Menu</v-btn
                     >
                   </v-list-item>
+
+                  <v-btn color="success" @click="setMenuItemAdd(i)"
+                    >add a new menu item</v-btn
+                  >
                   <v-list-item
                     three-line
                     v-for="(item, j) in menu.items"
@@ -110,6 +124,7 @@
       <edit-resturant-modal
         :data="resturantEdit"
         :showDialog="openResturantEditDialog"
+        :mode="resturantsDialogMode"
         @closeModal="openResturantEditDialog = $event"
       />
       <edit-menu-modal
@@ -117,12 +132,14 @@
         :showDialog="openMenuEditDialog"
         @closeModal="openMenuEditDialog = $event"
         :currentResturant="currentResturant"
+        :mode="menuDialogMode"
       />
       <edit-menu-item-modal
         :data="menuItemEdit"
         :showDialog="openMenuItemEditDialog"
         @closeModal="openMenuItemEditDialog = $event"
         :currentResturant="currentResturant"
+        :mode="menuItemDialogMode"
       />
     </v-app>
   </div>
@@ -153,10 +170,14 @@ export default {
         { Name: "Beverage" },
         { Name: "Crowd Pleaser" },
       ],
+
       currentResturant: null,
       resturantEdit: null,
+      resturantsDialogMode: null,
       menuEdit: null,
+      menuDialogMode: null,
       menuItemEdit: null,
+      menuItemDialogMode: null,
     };
   },
   methods: {
@@ -166,18 +187,53 @@ export default {
     },
     setResturantEdit(r) {
       console.log(r);
+      this.resturantsDialogMode = "edit";
       this.resturantEdit = r;
       this.openResturantEditDialog = true;
     },
+    setResturantAdd() {
+      this.resturantsDialogMode = "add";
+      this.resturantEdit = {
+        name: null,
+        price: null,
+        rating: null,
+        tagline: null,
+        logo: null,
+        uri: null,
+      };
+      this.openResturantEditDialog = true;
+    },
+    setMenuAdd() {
+      this.menuDialogMode = "add";
+      this.menuEdit = {
+        name: null,
+        image: null,
+      };
+      this.openMenuEditDialog = true;
+    },
     setMenuEdit(m, i) {
       m["id"] = i;
+      this.menuDialogMode = "edit";
       this.menuEdit = m;
       this.openMenuEditDialog = true;
+    },
+    setMenuItemAdd(i) {
+      this.menuItemEdit = {
+        menuId: i,
+        name: null,
+        price: null,
+        description: null,
+        video_url: null,
+        image: null,
+      };
+      this.menuItemDialogMode = "add";
+      this.openMenuItemEditDialog = true;
     },
     setMenuItemEdit(item, itemId, menu, menuId) {
       item["id"] = itemId;
       item["menuId"] = menuId;
       this.menuItemEdit = item;
+      this.menuItemDialogMode = "add";
       this.openMenuItemEditDialog = true;
     },
   },
