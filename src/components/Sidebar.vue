@@ -37,11 +37,11 @@
             Studio</router-link
           >
         </li>
-        <li class="white f4 pv2 ph4">
+        <!-- li class="white f4 pv2 ph4">
           <router-link to="/manage-menu" class="white flex"
             ><i class="material-icons pr3">map</i> Menu</router-link
           >
-        </li>
+        </li -->
         <li class="white f4 pv2 ph4">
           <router-link
             to="/manage-restaurants"

@@ -4,7 +4,7 @@
     <div class="main-content fl w-80 pa2 vh-100 bg-light-gray">
       <div class="inner-content mw8 center pt4 shadow-1 ve_dark_bg">
         <div class="tl mb3 ph3 white">
-          <h1 class="mb0">Manage Resturant</h1>
+          <h1 class="mb0">Manage Restaurants</h1>
           <p class="mv0">
             This is the Dashboard home of the
             <span class="fw6">Super Admin</span> Authentication Required.

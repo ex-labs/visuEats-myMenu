@@ -1,13 +1,21 @@
 <template>
   <div class="hello mw7 center">
-    <h1 class="f1 f-headline-l ph5">Welcome to <span class="underline">{{ msg }}</span>.</h1>
+    <h1 class="f1 f-headline-l ph5 white">Available <span class="underline">{{ txt }}</span>.</h1>
     <!-- p>
       Are you a Restaurant owner?<br>
     </p -->
-    <h3 class="mb2 f3 fw6">Available Soon</h3>
+    <!-- h3 class="mb2 f3 fw6">Download Now</h3 -->
     <ul>
-      <li class="w-25"><img class="pv2 w-100 animate__animated animate__bounce" alt="VE logo" src="../assets/badge-app-store.svg"></li>
-      <li class="w-25"><img class="pv2 w-100 animate__animated animate__bounce" alt="VE logo" src="../assets/badge-google-play.png"></li>
+      <li class="w-25">
+        <a href="https://apps.apple.com/us/app/visueats/id1548810661" target="_blank">
+          <img class="pv2 w-100 animate__animated animate__bounce" alt="VE logo" src="../assets/badge-app-store.svg">
+        </a>
+      </li>
+      <li class="w-25">
+        <a href="https://play.google.com/store/apps/details?id=com.visueats.visuEats" target="_blank">
+          <img class="pv2 w-100 animate__animated animate__bounce" alt="VE logo" src="../assets/badge-google-play.png">
+        </a>
+      </li>
     </ul>
     <div class="dn dev-footer absolute w-100">
       <p style="font-size:12px">Admin resource: <a href="http://presenting.xyz/presenting/visueats/" target="_blank" rel="noopener">visuEats Platform documentation</a>. Remove for <span class="fw6">Production</span>.</p>
@@ -19,13 +27,18 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    txt: String
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+h1 {
+  text-shadow: 5px 5px 50px #000;
+}
+
 h3 {
   margin: 40px 0 0;
 }

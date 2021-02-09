@@ -43,11 +43,7 @@
       <div class="cta-container mw7 center flex pt4 pb2 ve_accent_bg white fw5">
         <div class="w-60 pa4 f4 tl">Not a visuEats account holder?</div>
         <div class="w-40 tr pa4">
-          <a
-            class="f5 link dim br1 ph3 pv2 mb2 dib white ve_primary_bg"
-            @click="cta"
-            >contact us</a
-          >
+          <a class="f5 link dim br1 ph3 pv2 mb2 dib white ve_primary_bg" href="https://visueats.com/">contact us</a>
         </div>
       </div>
     </div>
