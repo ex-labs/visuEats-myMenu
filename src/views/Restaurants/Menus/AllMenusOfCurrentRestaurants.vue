@@ -2,6 +2,9 @@
   <div>
     <v-container>
       <v-row v-if="!loading">
+        <div class="w-100">
+          <div style="max-width:150px; margin:auto;"><img :src="restaurant.logo" class="w-100"></div>
+        </div>
         <v-col sm="12" md="12" lg="12" v-for="(v, k) in restaurant.menus" :key="k">
           <router-link
             :to="'/restaurants/' + $route.params.restaurantSlug + '/' + v.slug"
