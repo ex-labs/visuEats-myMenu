@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import slugify from "slugify";
+
 
 export default {
   props: ["showDialog", "data", "mode"],
@@ -172,9 +172,7 @@ export default {
 
         // put the url in the object
         var o = this.edit;
-        // edit the slug in accordance with name
 
-        o["slug"] = slugify(this.edit.name);
         if (logoURL) {
           o["logo"] = logoURL;
         }
@@ -187,6 +185,10 @@ export default {
         if (this.mode == "edit") {
           id = this.data.id;
         } else {
+          // set the slug in accordance with name
+          o["slug"] = await this.$store.dispatch("getSlug", {
+            name: this.edit.name,
+          });
           id = this.$fb.database().ref().push().key;
         }
 

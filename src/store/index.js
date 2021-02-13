@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 import firebase from 'firebase'
+import slugify from 'slugify'
 const store = new Vuex.Store({
     state: {
         //userstate: loggedout
@@ -30,7 +31,7 @@ const store = new Vuex.Store({
             var base64 = p.base64,
                 parent = p.parent,
                 type = p.type,
-            name = p.name
+                name = p.name
             return new Promise((resolve, reject) => {
                 if (base64) {
                     var uploadTask = firebase.storage().ref(parent + "/" + type + "/" + name).putString(base64, 'data_url')
@@ -52,6 +53,35 @@ const store = new Vuex.Store({
                 } else {
                     reject('No file uploaded')
                 }
+            })
+        },
+        getSlug(s, p) {
+            return new Promise( (resolve) => {
+                var {
+                    name
+                } = p
+                firebase.database().ref('slugs').once('value', async (snaps) => {
+                    var slugs = snaps.val()
+                    var slug = slugify(name)
+                    while (check(slugs, slug) == 1) {
+                        slug = slug + '-' + Math.ceil(Math.random() * 99)
+                    }
+                    await firebase.database().ref('slugs').push(slug)
+                    resolve(slug)
+                })
+
+                function check(slugs, slug) {
+                    var flag = -1
+                    for (var i in slugs) {
+                        console.log(`comparing ${slugs[i] } == ${slug} `);
+                        if (slugs[i] == slug) {
+                            flag = 1
+                            break;
+                        }
+                    }
+                    return flag
+                }
+
             })
         }
     }

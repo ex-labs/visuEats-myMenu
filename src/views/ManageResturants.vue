@@ -170,7 +170,6 @@ export default {
         { Name: "Beverage" },
         { Name: "Crowd Pleaser" },
       ],
-
       currentResturant: null,
       resturantEdit: null,
       resturantsDialogMode: null,
@@ -233,7 +232,7 @@ export default {
       item["id"] = itemId;
       item["menuId"] = menuId;
       this.menuItemEdit = item;
-      this.menuItemDialogMode = "add";
+      this.menuItemDialogMode = "edit";
       this.openMenuItemEditDialog = true;
     },
   },

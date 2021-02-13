@@ -6,7 +6,10 @@
         <v-btn icon dark @click="show = false">
           <v-icon> close</v-icon>
         </v-btn>
-        <v-toolbar-title>  {{mode=='edit' ? 'Edit' : 'Add New Item' }}   {{ data.name }}</v-toolbar-title>
+        <v-toolbar-title>
+          {{ mode == "edit" ? "Edit" : "Add New Item" }}
+          {{ data.name }}</v-toolbar-title
+        >
       </v-toolbar>
       <v-card-text class="mt-4">
         <v-form :ref="config.formRef">
@@ -60,9 +63,7 @@
   </v-dialog>
 </template>
 
-<script>
-//import slugify from "slugify";
-
+<script> 
 export default {
   props: ["showDialog", "data", "currentResturant", "mode"],
   data() {
@@ -142,8 +143,6 @@ export default {
 
         // put the url in the object
         var o = this.edit;
-        //update slug
-        //o["slug"] = slugify(o.name);
 
         if (imageURL) {
           o["image"] = imageURL;
@@ -153,6 +152,10 @@ export default {
         if (this.mode == "edit") {
           id = this.data.id;
         } else {
+          //generate  slug
+          o["slug"] = await this.$store.dispatch("getSlug", {
+            name: this.edit.name,
+          });
           id = this.$fb.database().ref().push().key;
         }
 

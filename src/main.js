@@ -41,6 +41,7 @@ firebase.auth().onAuthStateChanged(user => {
 
   function mountApp() {
     Vue.prototype.$fb = firebase
+ 
     if (!app) {
       app = new Vue({
         router,
