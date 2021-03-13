@@ -2,48 +2,49 @@
   <div>
     <v-container>
       <v-row v-if="!loading">
-        <v-col md="4" v-for="(v, k) in restaurants" :key="k">
-          <router-link
-            :to="'/restaurants/' + v.slug"
-            style="text-decoration: none"
-          >
-            <!-- v-card
+        <template v-for="(v, k) in restaurants">
+          <v-col md="4" :key="k" v-if="!v.archived">
+            <router-link
+              :to="'/restaurants/' + v.slug"
+              style="text-decoration: none"
+            >
+              <!-- v-card
               :style="{ 'background-image': 'url(' + v.uri + ')' }"
               style="background-size: cover; background-position: center"
             -->
-            <v-card class="mx-auto my-12">
-              <v-img height="250" :src="v.uri"></v-img>
-              <v-card-title primary-title class="restoTitle">{{ v.name }}</v-card-title>
+              <v-card class="mx-auto my-12">
+                <v-img height="250" :src="v.uri"></v-img>
+                <v-card-title primary-title class="restoTitle">{{
+                  v.name
+                }}</v-card-title>
 
-              <v-card-text>
-                <v-row
-                  align="center"
-                  class="mx-0"
-                >
-                  <v-rating
-                    :value="parseInt(v.rating)"
-                    color="amber"
-                    dense
-                    half-increments
-                    readonly
-                    size="14"
-                  ></v-rating>
+                <v-card-text>
+                  <v-row align="center" class="mx-0">
+                    <v-rating
+                      :value="parseInt(v.rating)"
+                      color="amber"
+                      dense
+                      half-increments
+                      readonly
+                      size="14"
+                    ></v-rating>
 
-                  <div class="dn grey--text ml-4"><!-- we'll use when we have more data -->
-                    4.5 (413)
+                    <div class="dn grey--text ml-4">
+                      <!-- we'll use when we have more data -->
+                      4.5 (413)
+                    </div>
+                  </v-row>
+
+                  <div class="my-4 subtitle-1">
+                    {{ v.price }} • {{ v.tagline }}
                   </div>
-                </v-row>
 
-                <div class="my-4 subtitle-1">
-                  {{ v.price }} • {{ v.tagline }}
-                </div>
-
-                <!-- div>Short Description</div -->
-              </v-card-text>
-
-            </v-card>
-          </router-link>
-        </v-col>
+                  <!-- div>Short Description</div -->
+                </v-card-text>
+              </v-card>
+            </router-link>
+          </v-col>
+        </template>
       </v-row>
       <v-row v-else>
         <v-col>
@@ -90,21 +91,19 @@ export default {
 </script>
 
 <style>
+.restoTitle {
+  color: #00a8ac;
+  font-weight: 700 !important;
+  padding-bottom: 0px !important;
+  display: block !important;
+}
 
-  .restoTitle {
-    color:#00a8ac;
-    font-weight:700!important;
-    padding-bottom:0px!important;
-    display:block!important;
-  }
+.v-rating {
+  max-width: 300px;
+  margin: auto;
+}
 
-  .v-rating {
-    max-width: 300px;
-    margin: auto;
-  }
-
-  .v-icon {
-    color:rgb(228, 193, 129)!important;
-  }
-
+.v-icon {
+  color: rgb(228, 193, 129) !important;
+}
 </style>

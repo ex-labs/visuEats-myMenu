@@ -148,13 +148,12 @@ const routes = [{
             path: ':menuSlug',
             name: 'menuItem',
             component: menuItemView,
-            children: [
-              {
-                path:'',
+            children: [{
+                path: '',
                 component: menuItem
               },
               {
-                path:':itemSlug',
+                path: ':itemSlug',
                 component: itemDetails
               }
             ]

@@ -2,31 +2,35 @@
   <div>
     <v-container>
       <v-row v-if="!loading">
-        <v-col md="6" sm="6" v-for="(v, k) in menu.items" :key="k">
-          <router-link
-            :to="
-              '/restaurants/' +
-              $route.params.restaurantSlug +
-              '/' +
-              $route.params.menuSlug +
-              '/' +
-              v.slug
-            "
-            style="text-decoration: none"
-          >
-            <v-card>
-              <v-img
-                :src="v.image"
-                height="200"
-                style="object-fit: cover; object-position: center"
-              ></v-img>
-              <v-card-title primary-title class="menuItem_title">{{ v.name }}</v-card-title>
-              <v-card-text class="tl">
-                <p class="f4 fw5">${{ v.price }}</p>
-              </v-card-text>
-            </v-card>
-          </router-link>
-        </v-col>
+        <template v-for="(v, k) in menu.items">
+          <v-col md="6" sm="6" v-if="!v.archived" :key="k">
+            <router-link
+              :to="
+                '/restaurants/' +
+                $route.params.restaurantSlug +
+                '/' +
+                $route.params.menuSlug +
+                '/' +
+                v.slug
+              "
+              style="text-decoration: none"
+            >
+              <v-card>
+                <v-img
+                  :src="v.image"
+                  height="200"
+                  style="object-fit: cover; object-position: center"
+                ></v-img>
+                <v-card-title primary-title class="menuItem_title">{{
+                  v.name
+                }}</v-card-title>
+                <v-card-text class="tl">
+                  <p class="f4 fw5">${{ v.price }}</p>
+                </v-card-text>
+              </v-card>
+            </router-link>
+          </v-col>
+        </template>
       </v-row>
       <v-row v-else>
         <v-col>
@@ -98,11 +102,9 @@ export default {
 </script>
 
 <style>
-
-  .menuItem_title {
-    color:rgb(224, 169, 153);
-    font-size: 1.3em;
-    font-weight: bold;
-  }
-
+.menuItem_title {
+  color: rgb(224, 169, 153);
+  font-size: 1.3em;
+  font-weight: bold;
+}
 </style>

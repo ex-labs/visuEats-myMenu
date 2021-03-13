@@ -29,7 +29,15 @@
                   >edit</i
                 ></v-btn
               >
-
+              &nbsp;
+              <v-btn icon>
+                <i
+                  class="material-icons"
+                  @click="toggleResturantArchive(resturant)"
+                >
+                  {{ resturant.archived ? "restore_from_trash" : "delete" }}
+                </i></v-btn
+              >
               &nbsp;
               <v-btn icon>
                 <i class="material-icons" @click="setResturant(resturant)"
@@ -84,11 +92,18 @@
               <v-expansion-panel-content>
                 <v-list class="text-left">
                   <v-list-item>
-                    <v-btn text block @click="setMenuEdit(menu, i)">
-                      <i class="material-icons">edit</i>Menu</v-btn
+                    <v-btn text @click="setMenuEdit(menu, i)">
+                      <i class="material-icons">edit</i>Menus</v-btn
+                    >
+
+                    <v-btn text @click="toggleMenuArchive(menu, i)">
+                      <i class="material-icons">
+                        {{
+                          menu.archived ? "restore_from_trash" : "delete"
+                        }} </i
+                      >Menu</v-btn
                     >
                   </v-list-item>
-
                   <v-btn color="success" @click="setMenuItemAdd(i)"
                     >add a new menu item</v-btn
                   >
@@ -107,12 +122,22 @@
                       </v-list-item-subtitle>
                       <v-list-item-subtitle>
                         Price : {{ item.price }}
+                        <div>
+                          <v-btn @click="setMenuItemEdit(item, j, menu, i)">
+                            Edit
+                          </v-btn>
+
+                          <v-btn @click="toggleMenuItemArchive(item, j, i)">
+                            <i class="material-icons">
+                              {{
+                                item.archived ? "restore_from_trash" : "delete"
+                              }}
+                            </i>
+                          </v-btn>
+                        </div>
                       </v-list-item-subtitle>
-                      <v-list-item-action>
-                        <v-btn @click="setMenuItemEdit(item, j, menu, i)">
-                          Edit
-                        </v-btn>
-                      </v-list-item-action>
+
+                      <v-list-item-action class=""> </v-list-item-action>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -201,6 +226,38 @@ export default {
         uri: null,
       };
       this.openResturantEditDialog = true;
+    },
+    toggleMenuItemArchive(item, j, i) {
+      this.$fb
+        .database()
+        .ref(
+          "restaurants/" +
+            this.currentResturant.id +
+            "/menus/" +
+            i +
+            "/items/" +
+            j
+        )
+        .update({
+          archived: item.archived ? false : true,
+        });
+    },
+    toggleMenuArchive(menu, i) {
+      this.$fb
+        .database()
+        .ref("restaurants/" + this.currentResturant.id + "/menus/" + i)
+        .update({
+          archived: menu.archived ? false : true,
+        });
+    },
+    toggleResturantArchive(re) {
+      this.$fb
+        .database()
+        .ref("restaurants")
+        .child(re.id)
+        .update({
+          archived: re.archived ? false : true,
+        });
     },
     setMenuAdd() {
       this.menuDialogMode = "add";
