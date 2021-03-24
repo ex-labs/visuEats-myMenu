@@ -44,6 +44,27 @@
             label="Tagline"
             v-model="edit.tagline"
           ></v-text-field>
+          <v-text-field
+            name="address"
+            required
+            outlined
+            label="Address"
+            v-model="edit.address"
+          ></v-text-field>
+          <v-text-field
+            name="phone"
+            required
+            outlined
+            label="Phone"
+            v-model="edit.phone"
+          ></v-text-field>
+          <v-text-field
+            name="hours"
+            required
+            outlined
+            label="Hours"
+            v-model="edit.hours"
+          ></v-text-field>
           <v-file-input
             accept="image/*"
             @change="handleImageUpload($event, 'logo')"
@@ -92,6 +113,9 @@ export default {
         tagline: null,
         logo: null,
         uri: null,
+        address: null,
+        phone: null,
+        hours: null,
       },
     };
   },
@@ -112,6 +136,9 @@ export default {
           this.edit.tagline = val.tagline || "";
           this.edit.uri = val.uri || "";
           this.edit.logo = val.logo || "";
+          this.edit.address = val.address || "";
+          this.edit.phone = val.phone || "";
+          this.edit.hours = val.hours || "";
         }
       },
     },
