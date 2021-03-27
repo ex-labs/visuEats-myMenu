@@ -205,6 +205,7 @@ export default {
     };
   },
   methods: {
+   
     setResturant(r) {
       this.currentResturant = r;
       this.openResturantManageDialog = true;
@@ -307,6 +308,11 @@ export default {
             arr.push(o);
           }
           this.resturants = arr;
+          if (this.currentResturant) {
+            this.currentResturant = this.resturants.find(
+              (item) => item.id == this.currentResturant.id
+            );
+          }
         });
     });
   },

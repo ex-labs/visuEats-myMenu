@@ -94,8 +94,6 @@
 </template>
 
 <script>
-
-
 export default {
   props: ["showDialog", "data", "mode"],
   data() {
@@ -227,6 +225,7 @@ export default {
             .then(() => {
               this.loading = false;
               this.show = false;
+            
             })
             .catch((err) => {
               this.loading = false;

@@ -42,8 +42,7 @@
   </v-dialog>
 </template>
 
-<script> 
-
+<script>
 export default {
   props: ["showDialog", "data", "currentResturant", "mode"],
   data() {
@@ -148,10 +147,10 @@ export default {
             .then(() => {
               this.loading = false;
               this.show = false;
+          
             })
             .catch((err) => {
               this.loading = false;
-
               alert(err.message);
             });
         } else {
@@ -160,6 +159,7 @@ export default {
             .then(() => {
               this.loading = false;
               this.show = false;
+         
             })
             .catch((err) => {
               this.loading = false;
