@@ -1,6 +1,6 @@
 <template>
   <div class="hello mw7 center">
-    <h1 class="f1 f-headline-l ph5 white">Available <span class="underline">{{ txt }}</span>.</h1>
+    <h1 class="f1 f-headline-l ph5 white">Download <span class="underline">{{ txt }}</span>.</h1>
     <!-- p>
       Are you a Restaurant owner?<br>
     </p -->

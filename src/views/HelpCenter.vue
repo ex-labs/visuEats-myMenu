@@ -15,7 +15,8 @@
             <li><a class="blue underline">Documentation</a></li>
             <li><a class="blue underline">Tutorials</a></li>
           </ul>
-          <p><a href="visueats.com/support">visueats.com/support</a></p>
+          <p>*<a href="visueats.com/support" target="_blank">visueats.com/support</a></p>
+          <p>Dev Documentation <a href="http://presenting.xyz/presenting/visueats/" target="_blank">Open in new tab</a></p>
         </div><!-- /col -->
       </div>
     </div>
