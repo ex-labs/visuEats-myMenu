@@ -26,22 +26,6 @@
             ><i class="material-icons pr3">addchart</i> Dashboard</router-link
           >
         </li>
-        <li class="white f4 pv2 ph4" v-if="userRole == 'super_admin'">
-          <router-link to="/app-roles" class="white flex"
-            ><i class="material-icons pr3">people</i> App Roles</router-link
-          >
-        </li>
-        <li class="white f4 pv2 ph4">
-          <router-link to="/design-studio" class="white flex"
-            ><i class="material-icons pr3">art_track</i> Design
-            Studio</router-link
-          >
-        </li>
-        <!-- li class="white f4 pv2 ph4">
-          <router-link to="/manage-menu" class="white flex"
-            ><i class="material-icons pr3">map</i> Menu</router-link
-          >
-        </li -->
         <li class="white f4 pv2 ph4">
           <router-link
             to="/manage-restaurants"
@@ -50,9 +34,26 @@
             ><i class="material-icons pr3">map</i> Restaurants</router-link
           >
         </li>
+        <li class="white f4 pv2 ph4" v-if="userRole == 'super_admin'">
+          <router-link to="/app-roles" class="white flex"
+            ><i class="material-icons pr3">people</i> App Roles</router-link
+          >
+        </li>
+        <!-- li class="white f4 pv2 ph4">
+          <router-link to="/design-studio" class="white flex"
+            ><i class="material-icons pr3">art_track</i> Design
+            Studio</router-link
+          >
+        </li -->
+        <!-- li class="white f4 pv2 ph4">
+          <router-link to="/manage-menu" class="white flex"
+            ><i class="material-icons pr3">map</i> Menu</router-link
+          >
+        </li -->
+        
         <li class="white f4 pv2 ph4">
           <router-link to="/manage-pages" class="white flex"
-            ><i class="material-icons pr3">library_books</i> Manage
+            ><i class="material-icons pr3">library_books</i>
             Pages</router-link
           >
         </li>
@@ -83,7 +84,7 @@
 export default {
   name: "Sidebar",
   created() {
-    this.tempimg = "https://secure.exlabs.us/img/jnr_2019.jpg";
+    this.tempimg = "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
     console.log("YO");
   },
 };

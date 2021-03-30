@@ -10,7 +10,7 @@
         </h1>
         <p class="mv0">
           This is the Dashboard home of the <span class="fw6">Menu Admin</span>.
-          No Authentication Required.
+          Admin Level Authentication Required.
         </p>
       </div>
       <div class="inner-content mw8 center pt1 flex">

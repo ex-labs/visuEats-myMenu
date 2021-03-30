@@ -2,22 +2,20 @@
   <div class="app_roles">
     <sidebar role="Demo Admin"></sidebar>
     <div class="main-content fl w-80 pa2 vh-100 bg-light-gray">
-      <p>
-        This is where we <span class="fw6">Manage App Roles</span>.
-        Authentication Required.
-      </p>
       <div class="inner-content mw8 center pt3 ph5 bg-white">
-        <div class="inner-heading w-100">
-          <h3 class="tl">Assign a New Role</h3>
+        <div class="inner-heading w-100 pb4">
+          <h1 class="mb0">Admin Management</h1>
+          <p><span class="fw6">Super Admin</span> Authentication Required. *Create and Assign Resto/Feature Admins</p>
         </div>
         <!-- /heading -->
         <div class="add-admin tl pb4">
+          <h3 class="tl mb2"><span class="red">*</span>Assign a New Role</h3>
           <input
             type="text"
-            class="w-60 pa3 dib pa3"
+            class="w-80 pa3 dib pa3"
             placeholder="Enter an Email Address"
           />
-          <select class="w-20 dib pa3 bn">
+          <select class="w-20 dib pa3 bn bg-black-20">
             <option>Admin</option>
             <option>Editor</option>
           </select>
@@ -33,7 +31,7 @@
               >
                 <img
                   class="w2 h2 w3-ns h3-ns br-100"
-                  src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+                  src="../assets/blank-profile.png"
                 />
                 <div class="pl3 flex-auto">
                   <span class="f6 db black-70">{{ v.name }}</span>

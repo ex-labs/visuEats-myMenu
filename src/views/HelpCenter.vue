@@ -2,10 +2,20 @@
   <div class="help_center">
     <sidebar role="Demo Admin"></sidebar>
     <div class="main-content fl w-80 pa2 vh-100 bg-light-gray">
-      <p>This is the <span class="fw6">Help Center</span>. Authentication Required.</p>
-      <div class="inner-content mw8 center pt4 flex">
-        <div class="w-100">
-          <p>The role and purpose of this view is not yet defined.</p>
+      <div class="mw8 center tl mb3">
+        <h1>Help Center</h1>
+        <p>Function/Components <span class="fw6">Undefined</span>. Basic Authentication Required.</p>
+      </div>
+      <div class="inner-content mw8 center pt4">
+        <div class="w-100 pv5 ph5 bg-white tl">
+          <p>The <span class="fw6">content</span> for this view is pending.</p>
+          <ul class="mv3">
+            <li><a class="blue underline">Admin FAQ</a></li>
+            <li><a class="blue underline">Support Information</a></li>
+            <li><a class="blue underline">Documentation</a></li>
+            <li><a class="blue underline">Tutorials</a></li>
+          </ul>
+          <p><a href="visueats.com/support">visueats.com/support</a></p>
         </div><!-- /col -->
       </div>
     </div>

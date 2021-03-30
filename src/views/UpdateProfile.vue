@@ -2,10 +2,13 @@
   <div class="settings">
     <sidebar role="Demo Admin"></sidebar>
     <div class="main-content fl w-80 pa2 vh-100 bg-light-gray">
-      <p>This is where we update <span class="fw6">Admin Profile</span> and other settings ( headshot, name, email ). Authentication Required.</p>
-      <div class="inner-content mw8 center pt4 flex">
-        <div class="w-100 tc pt6">
-          <p class="f1">manage Profile CRUD Components</p>
+      <div class="mw8 center tl mb3">
+        <h1>Profile Settings</h1>
+        <p><span class="fw6">Admin</span> Authentication Required.</p>
+      </div>
+      <div class="inner-content mw8 center pt4">
+        <div class="w-100 tc pv6 bg-white">
+          <p class="f2">Admin Profile CRUD Components</p>
         </div>
       </div>
     </div>
