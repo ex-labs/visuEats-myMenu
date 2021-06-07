@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="mb2">General Usage Data</h2>
-        <p class="animate__animated animate__headShake animate__infinite red">Pending...</p>
+        <p class="animate__animated animate__headShake animate__infinite red f7 fw7">Updating...</p>
         <div class="pt3 tl mw5 center">
             <li>Errors</li>
             <li>Quick Links</li>
