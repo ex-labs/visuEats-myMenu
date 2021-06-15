@@ -41,7 +41,7 @@
             name="tagline"
             required
             outlined
-            label="Tagline"
+            label="Type"
             v-model="edit.tagline"
           ></v-text-field>
           <v-text-field
