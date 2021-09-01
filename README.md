@@ -31,5 +31,14 @@ yarn build
 yarn lint
 ```
 
+### Deploy 
+
+Install Firebase tool cli
+
+```
+firebase deploy
+```
+
+
 ### framework
 See [Configuration Reference](https://cli.vuejs.org/config/).
