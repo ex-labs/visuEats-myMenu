@@ -5,10 +5,7 @@ This is the admin dashboard application that allows restaurant owners to manager
 Included CDN libraries
 + https://animate.style/
 + http://tachyons.io/
-+ https://materializecss.com/icons.html
-
-## Product Documentation
-http://presenting.xyz/presenting/visueats/
++ https://vuetifyjs.com/en/
 
 ## Current Roles in users/{uid}/role
  1. super_admin
@@ -34,5 +31,5 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
+### framework
 See [Configuration Reference](https://cli.vuejs.org/config/).
