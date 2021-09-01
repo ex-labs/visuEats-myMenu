@@ -33,7 +33,7 @@ yarn lint
 
 ### Deploy 
 
-Install Firebase tool cli
+Install Firebase tools cli
 
 ```
 firebase deploy
